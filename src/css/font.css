@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap");
+
+body {
+  font-family: area-normal, -apple-system, BlinkMacSystemFont, Segoe UI,
+    Helvetica, Arial, sans-serif;
+}
+
+h1,
+h2 {
+  font-family: "Dela Gothic One";
+  font-weight: bold;
+  text-transform: uppercase;
+}
