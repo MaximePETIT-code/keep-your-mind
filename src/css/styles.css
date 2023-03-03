@@ -1,0 +1,11 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  --color-text: #F0FBE1;
+  --color-bg: #8A3A96;
+}
