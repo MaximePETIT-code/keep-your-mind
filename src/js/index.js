@@ -5,7 +5,6 @@ const previews = document.querySelectorAll(".preview");
 // Smooth scrolling effect
 let lenis;
 
-
 const initSmoothScrolling = () => {
   // Smooth scrolling initialization
   lenis = new Lenis({
@@ -35,7 +34,8 @@ function rotateToMouse(e) {
   };
   const distance = Math.sqrt(center.x ** 2 + center.y ** 2);
 
-  this.style.transform = `
+  if (!this.classList.contains("active")) {
+    this.style.transform = `
     scale3d(1.05, 1.05, 1.05)
     rotate3d(
       0.5,
@@ -44,9 +44,10 @@ function rotateToMouse(e) {
       ${Math.log(distance) * 4}deg
     )
   `;
+  }
 }
 
-previews.forEach(preview => {
+previews.forEach((preview) => {
   preview.addEventListener("mouseenter", () => {
     rotateFunction = rotateToMouse.bind(preview);
     preview.addEventListener("mousemove", rotateFunction);
@@ -58,6 +59,38 @@ previews.forEach(preview => {
     preview.style.opacity = "";
   });
 });
+
+function showPreview(event) {
+  document.body.style.overflow = "hidden";
+  const clickedPreview = event.currentTarget;
+  hidePreviews();
+  clickedPreview.classList.remove("hidden");
+  clickedPreview.classList.add("active");
+}
+
+function hidePreviews() {
+  previews.forEach((preview) => {
+    preview.classList.add("hidden");
+  });
+}
+
+function showAllPreviews() {
+  document.body.style.overflow = "auto";
+  const activePreview = document.querySelector(".preview.active");
+  const id = activePreview.getAttribute("id");
+  window.location.href = `#${id}`;
+  previews.forEach((preview) => {
+    preview.classList.remove("hidden");
+    preview.classList.remove("active");
+  });
+}
+
+previews.forEach((preview) => {
+  preview.addEventListener("click", showPreview);
+});
+
+const closeBtn = document.querySelector(".close");
+closeBtn.addEventListener("click", showAllPreviews);
 
 // After loading of the page
 initSmoothScrolling();
