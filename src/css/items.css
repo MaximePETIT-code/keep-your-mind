@@ -18,6 +18,11 @@
   width: 430px;
   opacity: 0.9;
   margin: 15vh 0;
+  transition-duration: 300ms;
+  transition-timing-function: ease-out;
+  transform: rotate3d(0);
+  filter: drop-shadow(0 0 50px rgba(255, 255, 255, 0.08));
+
 }
 
 .preview__video {
@@ -58,6 +63,11 @@
   transition: 0.3s all ease-out;
 }
 
+.preview:hover{
+  opacity: 1;
+  filter: drop-shadow(0 0 50px rgba(255, 255, 255, 0.2));
+}
+
 .preview:hover .preview__descr {
   opacity: 1;
   transform: translateY(0);
@@ -68,7 +78,6 @@
   transform: translateY(-10px);
   transition: 0.3s all ease-out;
 }
-
 
 .shape_1 {
   clip-path: url(#shape_1);
