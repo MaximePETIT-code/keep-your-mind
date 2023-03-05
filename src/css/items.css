@@ -1,7 +1,26 @@
 .preview-wrap {
+  opacity: 0;
+  display: none;
   position: relative;
   z-index: 1;
   min-height: 100vh;
+  animation: previewApparition 1s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+
+}
+
+main.loaded .preview-wrap {
+  display: block;
+}
+
+@keyframes previewApparition {
+  from {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .preview-container {
@@ -17,7 +36,7 @@
   height: 78vh;
   width: 430px;
   opacity: 0.9;
-  margin: 15vh 0;
+  margin: 10vh 0;
   transition-duration: 300ms;
   transition-timing-function: ease-out;
   transform: rotate3d(0);
@@ -25,11 +44,11 @@
 }
 
 .preview.active {
-  transform: none!important;
+  transform: none !important;
   opacity: 1;
   filter: drop-shadow(0 0 50px rgba(255, 255, 255, 0.2));
   position: absolute;
-  top: -15vh;
+  top: -10vh;
   height: 100vh;
   width: 40vw;
   transition-duration: 300ms;
@@ -62,7 +81,7 @@
   transition: 0.7s all ease-in-out;
 }
 
-.active .preview__video::before{
+.active .preview__video::before {
   background-color: rgba(0, 0, 0, 0);
 }
 
@@ -82,11 +101,11 @@
   padding: 20px;
 }
 
-.preview__descr{
+.preview__descr {
   width: 300px;
 }
 
-.preview.active .preview__infos{
+.preview.active .preview__infos {
   opacity: 0;
   transform: translateY(10px);
   transition: 0.3s all ease-out;

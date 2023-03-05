@@ -105,7 +105,10 @@ closeBtn.addEventListener("click", showAllPreviews);
 const loader = new VideoLoader("video");
 loader.init(() => {
   if (loader.loaded) {
-    console.log("loaded");
+    document.querySelector("main").classList.add("loaded");
+    setTimeout(() => {
+      document.body.style.overflow = "visible";
+      initSmoothScrolling();
+    }, 1000);
   }
 });
-initSmoothScrolling();

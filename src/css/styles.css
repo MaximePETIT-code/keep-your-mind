@@ -12,52 +12,130 @@ body {
   margin: 0;
   --color-text: #f0fbe1;
   --color-bg: #55235d;
-  --purple-1: rgba(60,21,66,1);
-  --purple-2: rgba(27,9,49,1);
-  background: radial-gradient(circle, var(--purple-1) 0%, var(--purple-2) 200%);
+  --purple-1: rgba(60, 21, 66, 1);
+  --purple-2: rgba(27, 9, 49, 1);
+  background: linear-gradient(
+    90deg,
+    rgba(60, 21, 66, 1) 0%,
+    rgba(27, 9, 49, 1) 100%
+  );
   color: var(--color-text);
+  overflow: hidden;
+  min-height: 100vh;
 }
 
-h1, h2{
+h1,
+h2 {
   margin: 0;
 }
 
 main::before {
-	content: '';
+  content: "";
   background: url(../assets/img/noise.png);
-	height: 300%;
+  height: 300%;
   width: 300%;
-	left: -50%;
+  left: -50%;
   top: -100%;
-	opacity: 0.6;
-	position: fixed;
-	pointer-events: none;
+  opacity: 0.6;
+  position: fixed;
+  pointer-events: none;
   animation: grain 8s steps(10) infinite;
 }
 
 @keyframes grain {
-  0%, 100% { transform:translate(0, 0); }
-  10% { transform:translate(-5%, -10%); }
-  20% { transform:translate(-15%, 5%); }
-  30% { transform:translate(7%, -25%); }
-  40% { transform:translate(-5%, 25%); }
-  50% { transform:translate(-15%, 10%); }
-  60% { transform:translate(15%, 0%); }
-  70% { transform:translate(0%, 15%); }
-  80% { transform:translate(3%, 35%); }
-  90% { transform:translate(-10%, 10%); }
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-5%, -10%);
+  }
+  20% {
+    transform: translate(-15%, 5%);
+  }
+  30% {
+    transform: translate(7%, -25%);
+  }
+  40% {
+    transform: translate(-5%, 25%);
+  }
+  50% {
+    transform: translate(-15%, 10%);
+  }
+  60% {
+    transform: translate(15%, 0%);
+  }
+  70% {
+    transform: translate(0%, 15%);
+  }
+  80% {
+    transform: translate(3%, 35%);
+  }
+  90% {
+    transform: translate(-10%, 10%);
+  }
 }
 
 .title {
   font-size: calc(2700vw / 1018);
-  opacity: 0.2;
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -40%);
   width: 100%;
+  animation: animTitle 0.7s cubic-bezier(0.7, 0, 0.3, 1) forwards;
 }
 
-.title h1{
+@keyframes animTitle {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.3;
+  }
+}
+
+.title h1 {
   text-align: center;
+}
+
+body {
+  background-color: black;
+}
+
+/* .loader{
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+} */
+.loader {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.loader::after {
+  content: "";
+  width: 48px;
+  height: 48px;
+  border: 5px solid #fff;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+main.loaded .loader {
+  opacity: 0;
+  transition: 0.2s all ease;
 }
