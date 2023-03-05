@@ -1,4 +1,5 @@
 import Lenis from "@studio-freight/lenis";
+import VideoLoader from "./loading";
 
 const previews = document.querySelectorAll(".preview");
 
@@ -101,4 +102,10 @@ const closeBtn = document.querySelector(".close");
 closeBtn.addEventListener("click", showAllPreviews);
 
 // After loading of the page
+const loader = new VideoLoader("video");
+loader.init(() => {
+  if (loader.loaded) {
+    console.log("loaded");
+  }
+});
 initSmoothScrolling();
