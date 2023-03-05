@@ -71,6 +71,9 @@ function showPreview(event) {
   const video = clickedPreview.querySelector("video");
   video.currentTime = 0;
   video.muted = false;
+  video.loop = false;
+
+  video.addEventListener("ended", showAllPreviews);
 }
 
 function hidePreviews() {
@@ -87,6 +90,7 @@ function showAllPreviews() {
 
   video.currentTime = 0;
   video.muted = true;
+  video.loop = true;
   window.location.href = `#${id}`;
   previews.forEach((preview) => {
     preview.classList.remove("hidden");
