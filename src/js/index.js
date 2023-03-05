@@ -66,6 +66,10 @@ function showPreview(event) {
   hidePreviews();
   clickedPreview.classList.remove("hidden");
   clickedPreview.classList.add("active");
+
+  const video = clickedPreview.querySelector("video");
+  video.currentTime = 0;
+  video.muted = false;
 }
 
 function hidePreviews() {
@@ -78,6 +82,10 @@ function showAllPreviews() {
   document.body.style.overflow = "auto";
   const activePreview = document.querySelector(".preview.active");
   const id = activePreview.getAttribute("id");
+  const video = activePreview.querySelector("video");
+
+  video.currentTime = 0;
+  video.muted = true;
   window.location.href = `#${id}`;
   previews.forEach((preview) => {
     preview.classList.remove("hidden");
