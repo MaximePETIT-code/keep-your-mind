@@ -36,7 +36,7 @@ main::before {
   width: 300%;
   left: -50%;
   top: -100%;
-  opacity: 0.6;
+  opacity: 0.8;
   position: fixed;
   pointer-events: none;
   animation: grain 8s steps(10) infinite;
