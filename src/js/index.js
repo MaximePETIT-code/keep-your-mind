@@ -63,7 +63,9 @@ previews.forEach((preview) => {
 
 function showPreview(event) {
   document.body.style.overflow = "hidden";
-  document.querySelector(".close").classList.add('active')
+  setTimeout(() => {
+    document.querySelector(".close").classList.add('active')
+  }, 300)
   const clickedPreview = event.currentTarget;
   hidePreviews();
   clickedPreview.classList.remove("hidden");
@@ -75,6 +77,12 @@ function showPreview(event) {
   video.loop = false;
 
   video.addEventListener("ended", showAllPreviews);
+  document.addEventListener('click', function(event) {
+    document.querySelector('.preview');
+    if (!clickedPreview.contains(event.target)) {
+      showAllPreviews();
+    }
+  });
 }
 
 function hidePreviews() {
