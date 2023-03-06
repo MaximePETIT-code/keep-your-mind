@@ -77,9 +77,12 @@ function showPreview(event) {
   video.loop = false;
 
   video.addEventListener("ended", showAllPreviews);
-  document.addEventListener('click', function(event) {
-    document.querySelector('.preview');
-    if (!clickedPreview.contains(event.target)) {
+
+  document.addEventListener("click", function (event) {
+    if (
+      !clickedPreview.contains(event.target) &&
+      clickedPreview.classList.contains("active")
+    ) {
       showAllPreviews();
     }
   });
@@ -93,7 +96,7 @@ function hidePreviews() {
 
 function showAllPreviews() {
   document.body.style.overflow = "auto";
-  document.querySelector(".close").classList.remove('active')
+  document.querySelector(".close").classList.remove("active");
   const activePreview = document.querySelector(".preview.active");
   const id = activePreview.getAttribute("id");
   const video = activePreview.querySelector("video");
