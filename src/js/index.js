@@ -63,6 +63,7 @@ previews.forEach((preview) => {
 
 function showPreview(event) {
   document.body.style.overflow = "hidden";
+  document.querySelector(".close").classList.add('active')
   const clickedPreview = event.currentTarget;
   hidePreviews();
   clickedPreview.classList.remove("hidden");
@@ -84,6 +85,7 @@ function hidePreviews() {
 
 function showAllPreviews() {
   document.body.style.overflow = "auto";
+  document.querySelector(".close").classList.remove('active')
   const activePreview = document.querySelector(".preview.active");
   const id = activePreview.getAttribute("id");
   const video = activePreview.querySelector("video");

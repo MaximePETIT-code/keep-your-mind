@@ -7,15 +7,17 @@ class VideoLoader {
 
   init(callback) {
     this.videos.forEach((video) => {
-      video.addEventListener("loadeddata", this.checkVideosLoaded.bind(this));
+      console.log("loading...");
+      video.addEventListener("loadeddata", () => {
+        this.checkVideosLoaded();
+        if (this.loaded && callback) {
+          console.log("loaded");
+          setTimeout(() => {
+            callback();
+          }, 1000)
+        }
+      });
     });
-
-    setTimeout(() => {
-      if (this.loaded) {
-        console.log("loaded");
-        if (callback) callback();
-      }
-    }, 1000);
   }
 
   checkVideosLoaded() {
